@@ -49,7 +49,7 @@ def index():
             cur = conn.cursor()
 
             cur.execute('''
-                INSERT INTO users (name, age, gender, total_income, utilities_expense, entertainment_expense, school_fees_expense, shopping_expense, healthcare_expense)
+                INSERT INTO users (name, age, gender, total_income, utilities, entertainment, school_fees, shopping, healthcare)
                 VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
             ''', (name, age, gender, total_income, utilities, entertainment, school_fees, shopping, healthcare))
 
