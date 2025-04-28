@@ -2,7 +2,7 @@
 
 
 ## Overview
-The Flask Healthcare Application is a survey tool designed to collect data on participants' income and spending patterns for a healthcare product launch. The project involves web development with Flask, data storage with MongoDB, data processing using Python, and visualizations within a Jupyter notebook. The project is intended to gather insights on how participants allocate their income across various expense categories.
+The Flask Healthcare Application is a survey tool designed to collect data on participants' income and spending patterns for a healthcare product launch. The project involves web development with Flask, data storage with Postgres, data processing using Python, and visualizations within a Jupyter notebook. The project is intended to gather insights on how participants allocate their income across various expense categories.
 
 ### The notebook includes:
 - A Flask-based web application for data collection.
@@ -11,11 +11,11 @@ The Flask Healthcare Application is a survey tool designed to collect data on pa
 
 ## Key Features:
 - Flask Web Application: Collects participant data such as age, gender, income, and spending across categories like utilities, entertainment, school fees, shopping, and healthcare.
-- MongoDB Integration: Stores the participant data.
+- Postgres Integration: Stores the participant data.
 - Data Processing: Exports the stored data to a CSV file.
 - Data Visualization: Displays visual insights on income and spending using Matplotlib.
 - Integrated in Jupyter Notebook: All functionalities are available in one `ipynb` file.
-- AWS EC2 Deployment: The Flask web app is deployed and accessible via AWS EC2.
+- Render Deployment: The Flask web app is deployed and accessible on render.
 
 
 
