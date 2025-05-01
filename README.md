@@ -1,5 +1,8 @@
 # BAN6420-Final-Project-Flask-Healthcare-Application
 
+## Live App
+👉 Run the Web App : https://calistusndubuisiban6420surveyapp.onrender.com/
+
 
 ## Overview
 The Flask Healthcare Application is a survey tool designed to collect data on participants' income and spending patterns for a healthcare product launch. The project involves web development with Flask, data storage with Postgres, data processing using Python, and visualizations within a Jupyter notebook. The project is intended to gather insights on how participants allocate their income across various expense categories.
@@ -35,7 +38,7 @@ The Flask Healthcare Application is a survey tool designed to collect data on pa
 - **Pandas**, **Matplotlib**
 - **Jupyter Notebook**
 - **HTML/CSS**
-- **Render** / **AWS EC2** (for deployment)
+- **Render**  (for deployment)
 
 ## 🛠️ How to Use
 
