@@ -123,4 +123,4 @@ This project is open-source and free to use for educational purposes.
 
 ## 👨‍💻 Author
 Developed by Calistus Chukwuebuka Ndubuisi
-Data Analyst | Healthcare Data Application
+- Data Analyst | Healthcare Data Application
