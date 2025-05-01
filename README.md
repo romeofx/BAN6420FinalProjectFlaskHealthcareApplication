@@ -61,13 +61,13 @@ Open `final_project.ipynb` in Jupyter Notebook.
 - Enter the participant’s details (age, gender, total income, and spending) into the form and submit it. The data is automatically stored in MongoDB.
 
 
-## : Visualize the Data
+## Visualize the Data
 - The Data Visualization section will load the CSV file and create the following plots:
 - A bar chart showing the highest income by age.
 - Bar charts showing the spending distribution by gender across categories like utilities, entertainment, school fees, shopping, and healthcare.
 
 
-## : 📁 File Structure
+## 📁 File Structure
 - The project contains the following key files and directories:
 
 - app.py: Main Flask application script used to launch the survey form and handle data submission.
@@ -84,7 +84,7 @@ Open `final_project.ipynb` in Jupyter Notebook.
 
 - Healthcare_Data_Analysis_Final_Project.zip: A compressed file that contains all the necessary project files including notebook, images, CSV, and dependencies.
 
-## : 📂 Directories:
+## 📂 Directories:
 - templates/: Contains HTML templates for the Flask web app.
 
 - index.html: Survey form used to collect user input.
@@ -113,7 +113,7 @@ Open `final_project.ipynb` in Jupyter Notebook.
 - Make sure port 5000 is open and Flask runs in production mode (host='0.0.0.0').
 
 
-## : ✅ Conclusion
+## ✅ Conclusion
 This project delivers a complete pipeline—from data collection via Flask to data analysis using Jupyter—not only making survey data accessible and analyzable, but also providing a foundation for expanding into predictive analytics or dashboard reporting. The deployment on Render ensures that the application is scalable and accessible from anywhere.
 
 
@@ -121,6 +121,6 @@ This project delivers a complete pipeline—from data collection via Flask to da
 ## License
 This project is open-source and free to use for educational purposes.
 
-## : 👨‍💻 Author
+## 👨‍💻 Author
 Developed by Calistus Chukwuebuka Ndubuisi
 Data Analyst | Healthcare Data Application
