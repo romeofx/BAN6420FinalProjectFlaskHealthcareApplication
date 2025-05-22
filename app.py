@@ -1,61 +1,32 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
-from pymongo import MongoClient
 import os
+from flask import Flask, jsonify
+from pymongo import MongoClient, errors
 from dotenv import load_dotenv
 
-# Load environment variables
-load_dotenv()
+load_dotenv()  # Load environment variables from .env file
 
-# Flask App
 app = Flask(__name__)
-app.secret_key = os.urandom(24)
+app.secret_key = os.getenv("SECRET_KEY", "fallback_secret_key")
 
-# MongoDB Configuration
+# Get MongoDB URI from environment
 MONGO_URI = os.getenv("MONGO_URI")
-MONGO_DBNAME = os.getenv("MONGO_DBNAME")
 
-# Initialize MongoDB Client
-client = MongoClient(MONGO_URI)
-db = client[MONGO_DBNAME]
-participants_collection = db.participants  # ✅ Correct usage
+# Initialize Mongo client
+try:
+    client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=5000)  # 5 sec timeout
+    db = client.get_database()  # Gets default DB from URI
+    # Try pinging the server to confirm connection
+    client.admin.command('ping')
+    print("MongoDB connection established successfully.")
+except errors.ServerSelectionTimeoutError as err:
+    print(f"MongoDB connection failed: {err}")
+    db = None
 
-# Home Route
-@app.route('/', methods=['GET', 'POST'])
-def index():
-    if request.method == 'POST':
-        name = request.form.get('name')
-        age = request.form.get('age')
-        gender = request.form.get('gender')
-        total_income = request.form.get('total_income')
+@app.route('/')
+def home():
+    if db is None:
+        return jsonify({"error": "Database connection not established."}), 500
+    return jsonify({"message": "Welcome to the Survey App!", "database": str(db.name)})
 
-        # Expenses
-        utilities = float(request.form.get('utilities') or 0)
-        entertainment = float(request.form.get('entertainment') or 0)
-        school_fees = float(request.form.get('school_fees') or 0)
-        shopping = float(request.form.get('shopping') or 0)
-        healthcare = float(request.form.get('healthcare') or 0)
-
-        data = {
-            "name": name,
-            "age": age,
-            "gender": gender,
-            "total_income": total_income,
-            "utilities": utilities,
-            "entertainment": entertainment,
-            "school_fees": school_fees,
-            "shopping": shopping,
-            "healthcare": healthcare
-        }
-
-        try:
-            participants_collection.insert_one(data)
-            flash('Data submitted successfully!', 'success')
-            return redirect(url_for('index'))
-        except Exception as e:
-            flash(f'Error: {e}', 'danger')
-            return redirect(url_for('index'))
-
-    return render_template('index.html')
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=10000, debug=True)
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
