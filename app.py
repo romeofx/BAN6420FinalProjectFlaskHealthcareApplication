@@ -17,7 +17,7 @@ MONGO_DBNAME = os.getenv("MONGO_DBNAME")
 # Initialize MongoDB Client
 client = MongoClient(MONGO_URI)
 db = client[MONGO_DBNAME]
-participants_collection = survey_db.participants  # You can rename 'participants' as needed
+participants_collection = db.participants  # ✅ Correct usage
 
 # Home Route
 @app.route('/', methods=['GET', 'POST'])
