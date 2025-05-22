@@ -17,7 +17,7 @@ MONGO_DBNAME = os.getenv("MONGO_DBNAME", "survey_db")
 try:
     client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=5000)
     db = client[MONGO_DBNAME]
-    participants_collection = survey_db.participants    # Ping DB to confirm connection
+    participants_collection = db.participants    # Ping DB to confirm connection
     client.admin.command('ping')
     print("Connected to MongoDB successfully.")
 except errors.ServerSelectionTimeoutError as err:
