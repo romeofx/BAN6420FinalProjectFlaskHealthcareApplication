@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
-import psycopg2
+from pymongo import MongoClient
 import os
 from dotenv import load_dotenv
 
@@ -10,23 +10,14 @@ load_dotenv()
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
-# Database Configuration
-DB_HOST = os.getenv("PG_HOST")
-DB_PORT = os.getenv("PG_PORT")
-DB_NAME = os.getenv("PG_DATABASE")
-DB_USER = os.getenv("PG_USER")
-DB_PASSWORD = os.getenv("PG_PASSWORD")
+# MongoDB Configuration
+MONGO_URI = os.getenv("MONGO_URI")
+MONGO_DBNAME = os.getenv("MONGO_DBNAME")
 
-# Connect to PostgreSQL
-def get_db_connection():
-    conn = psycopg2.connect(
-        host=DB_HOST,
-        port=DB_PORT,
-        dbname=DB_NAME,
-        user=DB_USER,
-        password=DB_PASSWORD
-    )
-    return conn
+# Initialize MongoDB Client
+client = MongoClient(MONGO_URI)
+db = client[MONGO_DBNAME]
+participants_collection = survey_db.participants  # You can rename 'participants' as needed
 
 # Home Route
 @app.route('/', methods=['GET', 'POST'])
@@ -38,25 +29,26 @@ def index():
         total_income = request.form.get('total_income')
 
         # Expenses
-        utilities = request.form.get('utilities') or 0
-        entertainment = request.form.get('entertainment') or 0
-        school_fees = request.form.get('school_fees') or 0
-        shopping = request.form.get('shopping') or 0
-        healthcare = request.form.get('healthcare') or 0
+        utilities = float(request.form.get('utilities') or 0)
+        entertainment = float(request.form.get('entertainment') or 0)
+        school_fees = float(request.form.get('school_fees') or 0)
+        shopping = float(request.form.get('shopping') or 0)
+        healthcare = float(request.form.get('healthcare') or 0)
+
+        data = {
+            "name": name,
+            "age": age,
+            "gender": gender,
+            "total_income": total_income,
+            "utilities": utilities,
+            "entertainment": entertainment,
+            "school_fees": school_fees,
+            "shopping": shopping,
+            "healthcare": healthcare
+        }
 
         try:
-            conn = get_db_connection()
-            cur = conn.cursor()
-
-            cur.execute('''
-                INSERT INTO users (name, age, gender, total_income, utilities, entertainment, school_fees, shopping, healthcare)
-                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
-            ''', (name, age, gender, total_income, utilities, entertainment, school_fees, shopping, healthcare))
-
-            conn.commit()
-            cur.close()
-            conn.close()
-
+            participants_collection.insert_one(data)
             flash('Data submitted successfully!', 'success')
             return redirect(url_for('index'))
         except Exception as e:
