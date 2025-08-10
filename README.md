@@ -5,7 +5,6 @@
 
 
 ## Overview
-## Overview
 This is a Flask web application for collecting and analyzing survey data on income and spending.  
 The goal is to support decisions for a healthcare product launch by showing how people allocate their income.
 
