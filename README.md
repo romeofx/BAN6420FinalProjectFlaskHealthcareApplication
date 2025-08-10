@@ -13,7 +13,7 @@ The goal is to support decisions for a healthcare product launch by showing how 
 ## 🚀 Key Features
 
 - Web form to collect participant details.
-- SQLite/PostgreSQL database for secure storage.
+- SQLite database for secure storage.
 - CSV export for use in Jupyter notebooks.
 - Pandas + Matplotlib analysis for:
   - Highest income by age group.
@@ -33,7 +33,7 @@ The goal is to support decisions for a healthcare product launch by showing how 
 - Shopping  
 - Healthcare  
 
-## ⚙️ Technologies Used
+## ⚙️ Tech Stack
 
 - **Python**
 - **Flask**
