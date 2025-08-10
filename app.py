@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
+from flask import Response
 import os
 
 app = Flask(__name__)
@@ -118,6 +119,26 @@ def participants():
             } for p in all_participants
         ]
     }
+
+@app.route("/export")
+def export_csv():
+    # Match your Render DB path
+    if os.environ.get("RENDER"):  # Running on Render
+        DB_PATH = "/data/survey.db"
+    else:  # Local testing
+        DB_PATH = os.path.join(os.path.dirname(__file__), "data", "survey.db")
+
+    conn = sqlite3.connect(DB_PATH)
+    df = pd.read_sql_query("SELECT * FROM participant", conn)
+    conn.close()
+
+    # Convert to CSV and return as response
+    csv_data = df.to_csv(index=False)
+    return Response(
+        csv_data,
+        mimetype="text/csv",
+        headers={"Content-disposition": "attachment; filename=participant.csv"}
+    )
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000, debug=True)
