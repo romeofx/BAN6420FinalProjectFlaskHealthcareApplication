@@ -6,9 +6,17 @@ app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY", os.urandom(24))  # Use env secret or generate
 
 # Determine DB directory based on environment
+#if os.environ.get("RENDER"):  # Running on Render
+    #DB_DIR = "/data"
+#else:  # Running locally
+   # DB_DIR = os.path.join(os.path.dirname(__file__), "data")
+
+
 if os.environ.get("RENDER"):  # Running on Render
     DB_DIR = "/data"
-else:  # Running locally
+    if not os.path.exists(DB_DIR):
+        DB_DIR = "/tmp"  # Fallback if /data isn't available
+else:
     DB_DIR = os.path.join(os.path.dirname(__file__), "data")
 
 # Ensure DB directory exists
