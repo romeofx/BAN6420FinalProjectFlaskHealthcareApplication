@@ -1,7 +1,7 @@
 # BAN6420-Final-Project-Flask-Healthcare-Application
 
 ## Live App
-👉 Run the Web App : [https://calistusndubuisiban6420surveyapp.onrender.com/](https://ban6420finalprojectflaskhealthcareapplic.onrender.com)
+👉 Run the Web App : https://ban6420finalprojectflaskhealthcareapplic.onrender.com/
 
 
 ## Overview
