@@ -105,14 +105,11 @@ Load the exported CSV and run the analysis cells.
 
 - charts/: Directory containing generated visualizations.
 
-- data/ – SQLite database (local)
+- data/: – SQLite database (local)
 
 - *.png: Bar charts and other visuals produced by the Jupyter notebook.
 
 ## : 🌐 Deployment Notes
-- Local Deployment: Update .env with DB connection string for production.
-
-- Railway PostgreSQL: Connected via pgAdmin for database management.
 
 - Cloud Hosting:
 
