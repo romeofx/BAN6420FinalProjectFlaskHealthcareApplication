@@ -5,18 +5,21 @@
 
 
 ## Overview
-The Flask Healthcare Application is a survey tool designed to collect data on participants' income and spending patterns for a healthcare product launch. The project involves web development with Flask, data storage with Postgres, data processing using Python, and visualizations within a Jupyter notebook. The project is intended to gather insights on how participants allocate their income across various expense categories.
+## Overview
+This is a Flask web application for collecting and analyzing survey data on income and spending.  
+The goal is to support decisions for a healthcare product launch by showing how people allocate their income.
 
 
 ## 🚀 Key Features
 
-- **Flask Web App**: Clean interface to collect participant information.
-- **PostgreSQL Integration**: Stores form data securely using Railway-hosted PostgreSQL.
-- **Jupyter Notebook**: For exporting and visualizing survey data.
-- **Matplotlib + Pandas**: To generate insights like:
-  - Age groups with highest income
-  - Gender distribution in spending categories
-- **Deployment Ready**: on Render.
+- Web form to collect participant details.
+- SQLite/PostgreSQL database for secure storage.
+- CSV export for use in Jupyter notebooks.
+- Pandas + Matplotlib analysis for:
+  - Highest income by age group.
+  - Spending breakdown by gender.
+- Deployed on Render for public access.
+
 
 ## 📊 Dataset Fields
 
