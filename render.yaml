@@ -7,8 +7,10 @@ services:
     startCommand: "gunicorn app:app"
     runtime: python
     pythonVersion: 3.9
+    disk:
+      name: survey-data
+      mountPath: /data
+      sizeGB: 1
     envVars:
-      - key: MONGO_URI
-        sync: false
-      - key: MONGO_DBNAME
-        sync: false
+      - key: SECRET_KEY
+        generateValue: true
