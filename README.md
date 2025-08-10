@@ -45,21 +45,22 @@ The goal is to support decisions for a healthcare product launch by showing how 
   
 ## 🛠️ How to Use
 
-### 1. 🔧 Setup and Installation
-
-Clone the repo and install dependencies:
-
+git clone <repo-url>
+cd BAN6420FinalProjectFlaskHealthcareApplication
 pip install -r requirements.txt
 
 ## Key dependencies include:
 - Flask: Web application framework for data collection.
-- Railway + pgAdmin: For postgreSQL integration.
 - matplotlib & pandas: For data visualization and manipulation.
 - Render Deployment: The project is deployed on render web services.
 
-##  Running the Project
-Step 1: Run the Jupyter Notebook
-Open `final_project.ipynb` in Jupyter Notebook.
+##   Run Locally
+`python app.py`
+App runs at http://127.0.0.1:5000
+
+Run Analysis
+Open final_project.ipynb in Jupyter Notebook.
+Load the exported CSV and run the analysis cells.
 
 ## Access the Flask Web Application
 - Once you run app.py file the web application will be accessible at:
@@ -76,13 +77,12 @@ Open `final_project.ipynb` in Jupyter Notebook.
 ## 📁 File Structure
 - The project contains the following key files and directories:
 
-- app.py: Main Flask application script used to launch the survey form and handle data submission.
+- File Structure
+- app.py – Flask app and routes
 
-- .env: Stores sensitive environment variables (e.g., PostgreSQL credentials).
+- requirements.txt – Python dependencies
 
-- requirements.txt: Lists all the Python dependencies required for the project.
-
-- final_project.ipynb: Jupyter notebook that integrates the Flask app, exports data from PostgreSQL, and generates visualizations.
+- final_project.ipynb: Jupyter notebook that integrates the Flask app, exports data from SQLlite, and generates visualizations.
 
 - participants_data.csv: The CSV file generated after exporting collected data from the PostgreSQL database.
 
@@ -105,19 +105,22 @@ Open `final_project.ipynb` in Jupyter Notebook.
 
 - charts/: Directory containing generated visualizations.
 
+- data/ – SQLite database (local)
+
 - *.png: Bar charts and other visuals produced by the Jupyter notebook.
 
 ## : 🌐 Deployment Notes
-- Local Deployment: Ensure PostgreSQL is running and accessible via .env.
+- Local Deployment: Update .env with DB connection string for production.
 
 - Railway PostgreSQL: Connected via pgAdmin for database management.
 
 - Cloud Hosting:
 
-- On Render or AWS EC2, update your .env file with public DB connection strings.
+- Update .env with DB connection string for production.
 
-- Make sure port 5000 is open and Flask runs in production mode (host='0.0.0.0').
-
+- For Render:
+     - Add requirements.txt and optional runtime.txt (Python version).
+    - Set start command to gunicorn app:app
 
 ## ✅ Conclusion
 This project delivers a complete pipeline—from data collection via Flask to data analysis using Jupyter—not only making survey data accessible and analyzable, but also providing a foundation for expanding into predictive analytics or dashboard reporting. The deployment on Render ensures that the application is scalable and accessible from anywhere.
