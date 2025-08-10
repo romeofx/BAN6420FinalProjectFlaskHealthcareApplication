@@ -35,13 +35,13 @@ The goal is to support decisions for a healthcare product launch by showing how 
 
 ## ⚙️ Tech Stack
 
-- **Python  
-- **Flask  
-- **SQLite (local) / PostgreSQL (cloud)  
-- **Pandas  
-- **Matplotlib  
-- **HTML/CSS  
-- **Render (deployment)
+- Python  
+- Flask  
+- SQLite (local) / PostgreSQL (cloud)  
+- Pandas  
+- Matplotlib  
+- HTML/CSS  
+- Render (deployment)
   
 ## 🛠️ How to Use
 
