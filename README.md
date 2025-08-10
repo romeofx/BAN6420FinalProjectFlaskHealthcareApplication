@@ -43,10 +43,10 @@ The goal is to support decisions for a healthcare product launch by showing how 
 - Render (deployment)
   
 ## 🛠️ How to Use
-
 git clone <repo-url>
 cd BAN6420FinalProjectFlaskHealthcareApplication
 pip install -r requirements.txt
+
 
 ## Key dependencies include:
 - Flask: Web application framework for data collection.
@@ -55,16 +55,12 @@ pip install -r requirements.txt
 
 ##   Run Locally
 `python app.py`
-App runs at http://127.0.0.1:5000
-
+App runs at `http://127.0.0.1:5000`
+- Enter the participant’s details (age, gender, total income, and spending) into the form and submit it. The data is automatically stored in Sqllite
+  
 Run Analysis
 Open final_project.ipynb in Jupyter Notebook.
 Load the exported CSV and run the analysis cells.
-
-## Access the Flask Web Application
-- Once you run app.py file the web application will be accessible at:
-`http://127.0.0.1:5000`
-- Enter the participant’s details (age, gender, total income, and spending) into the form and submit it. The data is automatically stored in MongoDB.
 
 
 ## Visualize the Data
@@ -112,10 +108,10 @@ Load the exported CSV and run the analysis cells.
 
 - Cloud Hosting:
 
-- Update .env with DB connection string for production.
+- Update `.env` with DB connection string for production.
 
 - For Render:
-     - Add requirements.txt and optional runtime.txt (Python version).
+     - Add `requirements.txt` and optional `runtime.txt` (Python version).
     - Set start command to gunicorn app:app
 
 ## ✅ Conclusion
